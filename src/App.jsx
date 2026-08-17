@@ -25,7 +25,7 @@ export default function App() {
           </span>
         </p>
         <p>
-          Message to Secret room:{" "}
+          Reply from Secret room:{" "}
           <span>{answer ? `✅ ${answer}` : "⌛ waiting for message..."}</span>
         </p>
 

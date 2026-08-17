@@ -4,7 +4,7 @@ export default function Secretroom({ question, answer, handleAnswer }) {
       <h1>Secretroom</h1>
       <span>{question ? `✅ ${question}` : " ⌛ waiting for message"}</span>
       <p>
-        Message to Secret room:{" "}
+        Reply from Secret room:{" "}
         <span>{answer ? `✅ ${answer}` : "⌛ waiting for message..."}</span>
         <textarea
           value={answer}
