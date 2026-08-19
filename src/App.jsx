@@ -32,13 +32,14 @@ export default function App() {
 
     async function fetchReinforcements() {
       const targets = pokemonOption.slice(0, 4);
-      const results = await Promise.all(
-        targets.map((name) =>
-          fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((res) =>
-            res.json(),
-          ),
-        ),
-      );
+      const results = [];
+      for (const name of targets) {
+        const response = await fetch(
+          `https://pokeapi.co/api/v2/pokemon/${name}`,
+        );
+        const data = await response.json();
+        results.push(data);
+      }
       setReinforcementPokemons(results);
     }
     fetchReinforcements();
