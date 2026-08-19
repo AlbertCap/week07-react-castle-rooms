@@ -13,6 +13,9 @@ export default function App() {
   const [pokemonName, setPokemonName] = useState("pikachu");
   const [pokemon, setPokemon] = useState(null);
 
+  const [reinforcementCalled, setReinforcementCalled] = useState(false);
+  const [reinforcementPokemons, setReinforcementPokemons] = useState([]);
+
   useEffect(() => {
     async function fetchPokemon() {
       const response = await fetch(
@@ -24,20 +27,57 @@ export default function App() {
     fetchPokemon();
   }, [pokemonName]);
 
+  useEffect(() => {
+    if (!reinforcementCalled) return;
+
+    async function fetchReinforcements() {
+      const targets = pokemonOption.slice(0, 4);
+      const results = await Promise.all(
+        targets.map((name) =>
+          fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((res) =>
+            res.json(),
+          ),
+        ),
+      );
+      setReinforcementPokemons(results);
+    }
+    fetchReinforcements();
+  }, [reinforcementCalled]);
+
+  function handleCallForReinforcement() {
+    setReinforcementCalled(true);
+  }
+
 
 
   return (
     <>
       <div className=" bg-slate-900 text-amber-900 text-center">
+        <div className="flex flex-col pb-5">
         <h1>Outside the Castle</h1>
         <p className="">
           Pokemon outside:
-          {pokemon && (
-            <img
-              className="block mx-auto"
-              alt={pokemon.name}
-              src={pokemon.sprites.front_default}
-            />
+          {reinforcementCalled ? (
+            <div className="flex flex-row justify-center gap-4">
+              {reinforcementPokemons.map((p) => (
+                <div key={p.name} className="flex flex-col items-center">
+                  <img
+                    className="block"
+                    alt={p.name}
+                    src={p.sprites.front_default}
+                  />
+                  <p className="capitalize">{p.name}</p>
+                </div>
+              ))}
+            </div>
+          ) : (
+            pokemon && (
+              <img
+                className="block mx-auto"
+                alt={pokemon.name}
+                src={pokemon.sprites.front_default}
+              />
+            )
           )}
           <p />
           <div>
@@ -58,13 +98,32 @@ export default function App() {
           Reply from Secret room:{" "}
           <span>{answer ? `✅ ${answer}` : "⌛ Waiting for Reply..."}</span>
         </p>
+        {(answer.includes("Help!") || answer.includes("SOS")) && ( //included จะทำงานถ้ามีคำตรงกัน และ && คือเงื่อนไขที่จะทำหลังจากนั้น
+          <>
+            <p>help signal from inside</p>
+
+            {reinforcementCalled ? (
+              <button className="bg-white w-fit mx-auto mb-2 rounded-2xl">
+                Build Escape pod
+              </button>
+            ) : (
+              <button
+                onClick={handleCallForReinforcement}
+                className="bg-white w-fit mx-auto mb-2 rounded-2xl"
+              >
+                Call for reinforcement!
+              </button>
+            )}
+          </>
+        )}
 
         <textarea
           value={question}
           onChange={handleQuestion}
-          className="bg-white text-black rounded px-2 py-1"
+          className="bg-white text-black rounded px-2 py-1 w-xs mx-auto"
           placeholder="type your message here..."
         />
+        </div>
         <A_Castle
           pokemonCage={pokemonCage}
           pokemon={pokemon}

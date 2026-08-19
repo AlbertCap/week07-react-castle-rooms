@@ -36,7 +36,7 @@ export default function Secretroom({
       
       <div>
         Reply from Secret room:{" "}
-        
+        <div className="border rounded-lg border-red-900 outline 1px w-fit mx-auto px-4 py-2">
         {/* แสดงรูป Mew */}
         {secretPokemon ? (
           <img
@@ -55,6 +55,7 @@ export default function Secretroom({
                {pokemonOption[4]} 
              </p>
           ) : null}
+        </div>
         </div>
         
         <span className="block my-2">
