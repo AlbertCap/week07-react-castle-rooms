@@ -1,9 +1,6 @@
 import Tower from "./B_Tower";
 
 export default function A_Castle({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -14,9 +11,6 @@ export default function A_Castle({
       <h1>Castle</h1>
 
       <Tower
-        question={question}
-        answer={answer}
-        handleAnswer={handleAnswer}
         pokemonCage={pokemonCage}
         pokemon={pokemon}
         pokemonName={pokemonName}

@@ -1,9 +1,6 @@
 import Secretroom from "./I_Secretroom";
 
 export default function Nook({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -15,9 +12,6 @@ export default function Nook({
 
       <div>
         <Secretroom
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

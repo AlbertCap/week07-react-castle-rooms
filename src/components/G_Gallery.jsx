@@ -1,9 +1,6 @@
 import Nook from "./H_Nook";
 
 export default function Gallery({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName, 
@@ -15,9 +12,6 @@ export default function Gallery({
 
       <div>
         <Nook
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

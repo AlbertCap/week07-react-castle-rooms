@@ -1,10 +1,9 @@
 // ไฟล์ Secretroom.jsx
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { MessageContext} from "../context/messageContext/MessageContext";
+
 
 export default function Secretroom({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -25,6 +24,8 @@ export default function Secretroom({
     
     fetchSecretPokemon();
   }, [pokemonOption]);
+
+  const {question, answer, handleAnswer} = useContext(MessageContext);
 
   return (
     <div className="bg-gray-500 shadow-md h-80 pl-1 pr-1">

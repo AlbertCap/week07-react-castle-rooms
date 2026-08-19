@@ -1,9 +1,6 @@
 import Room from "./D_Room";
 
 export default function Chamber({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -15,9 +12,6 @@ export default function Chamber({
 
       <div>
         <Room
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

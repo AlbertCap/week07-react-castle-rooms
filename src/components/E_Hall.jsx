@@ -1,9 +1,6 @@
 import Corridor from "./F_Corridor";
 
 export default function Hall({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -15,9 +12,6 @@ export default function Hall({
 
       <div>
         <Corridor
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

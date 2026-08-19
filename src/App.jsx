@@ -1,9 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState ,useContext, useEffect } from "react";
 import A_Castle from "./components/A_Castle";
 
+import { MessageContext } from "./context/messageContext/MessageContext";
+
 export default function App() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("Coming to ya!");
+
+  const {question, answer, handleAnswer, handleQuestion} = useContext(MessageContext);
 
   const pokemonOption = ["pikachu", "bulbasaur", "charmander", "squirtle", "mew"];
   const pokemonCage = ["mew"]
@@ -22,15 +24,7 @@ export default function App() {
     fetchPokemon();
   }, [pokemonName]);
 
-  const handleQuestion = (e) => {
-    console.log(e);
-    setQuestion(e.target.value);
-  };
 
-  const handleAnswer = (e) => {
-    console.log(e);
-    setAnswer(e.target.value);
-  };
 
   return (
     <>
@@ -72,9 +66,6 @@ export default function App() {
           placeholder="type your message here..."
         />
         <A_Castle
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

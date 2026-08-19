@@ -1,9 +1,6 @@
 import Chamber from "./C_Chamber";
 
 export default function Tower({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName,
@@ -15,9 +12,6 @@ export default function Tower({
 
       <div>
         <Chamber
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}

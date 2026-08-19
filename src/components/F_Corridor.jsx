@@ -1,9 +1,6 @@
 import Gallery from "./G_Gallery";
 
 export default function Corridor({
-  question,
-  answer,
-  handleAnswer,
   pokemonCage,
   pokemon,
   pokemonName, 
@@ -15,9 +12,6 @@ export default function Corridor({
 
       <div>
         <Gallery
-          question={question}
-          answer={answer}
-          handleAnswer={handleAnswer}
           pokemonCage={pokemonCage}
           pokemon={pokemon}
           pokemonName={pokemonName}
