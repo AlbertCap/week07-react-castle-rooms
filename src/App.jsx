@@ -1,19 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
 import A_Castle from "./components/A_Castle";
 
+import { MessageContext } from "./context/messageContext/MessageContext";
+
 export default function App() {
-  const [question, setQuestion] = useState("");
-  const [answer, setAnswer] = useState("Coming to ya!");
 
-  const handleQuestion = (e) => {
-    console.log(e);
-    setQuestion(e.target.value);
-  };
-
-  const handleAnswer = (e) => {
-    console.log(e);
-    setAnswer(e.target.value);
-  };
+  const {question, answer, handleAnswer, handleQuestion} = useContext(MessageContext);
 
   return (
     <>

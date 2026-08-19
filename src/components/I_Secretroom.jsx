@@ -1,6 +1,12 @@
-export default function Secretroom({ question, answer, handleAnswer }) {
+import { useContext } from "react";
+import { MessageContext} from "../context/messageContext/MessageContext";
+
+export default function Secretroom() {
+
+  const {question, answer, handleAnswer} = useContext(MessageContext);
+
   return (
-    <div className="bg-gray-500 shadow-md h-80 pl-1 pr-1">
+    <div className="bg-gray-500 shadow-md h-80 pl-1 pr-1 ">
       <h1>Secretroom</h1>
       <span>{question ? `✅ ${question}` : " ⌛ waiting for message"}</span>
       <p>

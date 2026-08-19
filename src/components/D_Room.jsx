@@ -1,11 +1,11 @@
 import Hall from "./E_Hall";
 
-export default function Room({question, answer, handleAnswer}) {
+export default function Room() {
     return(
         <div className="bg-pink-100 shadow-md pl-1 pr-1">
             <h1>Room</h1>
              
-            <div><Hall question={question} answer={answer} handleAnswer={handleAnswer}/></div>
+            <div><Hall/></div>
         </div>
     );
 }
